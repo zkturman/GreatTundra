@@ -37,6 +37,25 @@ Diome appears and begins speaking, talking about how perhaps the end for Nich an
 
 ## Breakdown
 
+### Player Controls and Movement
+
+Nich will be able to move left and right, which runs in the corresponding directions. The player's direction changes immediately upon left/right input. Pressing the up arrow will allow the player to jump. If they are not in contact with the ground, then they can perform a double jump by pressing the up arrow again.
+
+Other controls are outlined as follows:
+
+| Control | Action |
+| :-----: | :----: |
+| A/Left Arrow | Character moves left |
+| D/Right Arrow | Character moves right |
+| W/Up Arrow | Character jumps or performs double jump |
+| E | Interacts with certain objects |
+| J/Left click | Staff swing |
+| K/Middle click | Snowflake shuriken |
+| L/Right click | Snowball cannon |
+| 1 | Consume health potion |
+| 2 | Consume charge attack reducer |
+| 3 | Consume attack booster |
+
 ### Rooms
 
 ### Doors
