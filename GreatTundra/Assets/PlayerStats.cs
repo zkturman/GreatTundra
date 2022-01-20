@@ -10,9 +10,16 @@ public static class PlayerStats
         get => speed; 
         private set => speed = value;
     }
+    private static float strength = 1f;
+    public static float Strength
+    {
+        get => strength;
+        private set => strength = value;
+    }
 
     public static void UpdateSpeed(float newSpeed)
     {
         Speed = newSpeed;
     }
+
 }
