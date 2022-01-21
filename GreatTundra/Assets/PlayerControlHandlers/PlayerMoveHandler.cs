@@ -35,6 +35,7 @@ public class PlayerMoveHandler : MonoBehaviour
     private void handlePlayerMovement()
     {
         float xVelocityComponent = Input.GetAxisRaw("Horizontal") * defaultRunSpeed;
+        PlayerStats.UpdatePlayerDirection(xVelocityComponent);
         float yVelocityComponent = playerRigidBody.velocity.y;
         currentSpeed = new Vector2(xVelocityComponent, yVelocityComponent);
         playerRigidBody.velocity = currentSpeed;

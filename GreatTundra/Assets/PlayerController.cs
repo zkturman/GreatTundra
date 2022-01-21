@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, PausibleObject
 {
-    private bool pauseStatus = false;
-    public bool PauseStatus 
+    private bool playerIsPaused = false;
+    public bool ObjectIsPaused 
     {
-        get => pauseStatus;
+        get => playerIsPaused;
     }
     [SerializeField]
     private List<MonoBehaviour> playerControlHandlers = new List<MonoBehaviour>();
@@ -17,10 +17,10 @@ public class PlayerController : MonoBehaviour, PausibleObject
 
     public void SetObjectPauseFlag(bool pauseStatusFlag)
     {
-        pauseStatus = pauseStatusFlag;
+        playerIsPaused = pauseStatusFlag;
         foreach (MonoBehaviour handler in playerControlHandlers)
         {
-            handler.enabled = pauseStatus;
+            handler.enabled = !playerIsPaused;
         }
         Vector2 velocityAtStatusChange = rigidbody.velocity;
         rigidbody.velocity = defaultVelocity;

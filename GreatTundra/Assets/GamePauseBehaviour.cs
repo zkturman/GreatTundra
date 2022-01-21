@@ -7,7 +7,7 @@ public class GamePauseBehaviour : MonoBehaviour
 {
     private List<PausibleObject> pausibleObjects = new List<PausibleObject>();
     [SerializeField]
-    private bool pauseStatus = false;
+    private bool isGamePaused = false;
 
     private void Awake()
     {
@@ -23,5 +23,22 @@ public class GamePauseBehaviour : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PauseGame()
+    {
+        if (!isGamePaused)
+        {
+            pausibleObjects.ForEach(x => x.SetObjectPauseFlag(true));
+            isGamePaused = true;
+        }
+    }
+
+    public void ResumeGame()
+    {
+        if (isGamePaused)
+        {
+            pausibleObjects.ForEach(x => x.SetObjectPauseFlag(false));
+        }
     }
 }

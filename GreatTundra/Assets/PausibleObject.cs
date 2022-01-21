@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface PausibleObject
 {
-    public bool PauseStatus { get; }
+    public bool ObjectIsPaused { get; }
     public void SetObjectPauseFlag(bool pauseStatusToSet);
 }
