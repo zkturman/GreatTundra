@@ -23,6 +23,6 @@ public class GamePuzzleBehaviour : MonoBehaviour, GamePuzzle
 
     public virtual void SolvePuzzle()
     {
-
+        IsSolved = true;
     }
 }

@@ -17,6 +17,17 @@ public class ShurikenAttackBehaviour : MonoBehaviour, ChargeAttack
     // Update is called once per frame
     void Update() {    }
 
+    public void ConfigurePuzzleIgnoring(ShurikenPuzzleBarrierBehaviour[] shurikenPuzzles)
+    {
+        foreach(ShurikenPuzzleBarrierBehaviour puzzle in shurikenPuzzles)
+        {
+            foreach(GameObject shuriken in shurikenObjects)
+            {
+                Physics2D.IgnoreCollision(shuriken.GetComponent<Collider2D>(), puzzle.GetComponent<Collider2D>());
+            }
+        }
+    }
+
     public void ReleaseAttack(int powerStage)
     {
         List<GameObject> shurikenToFire = detrmineShurikenToFire(powerStage);

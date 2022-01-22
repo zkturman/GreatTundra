@@ -22,9 +22,11 @@ public class PlayerAttackHandler : MonoBehaviour
     private (KeyCode key, int mouseButton) shurikenAttackCommand = (KeyCode.L, RIGHTCLICK);
     private bool isCharging = false;
     private int chargeAttackPowerLevel;
+    private ShurikenPuzzleBarrierBehaviour[] shurikenPuzzles;
 
     private void Awake()
     {
+        shurikenPuzzles = FindObjectsOfType<ShurikenPuzzleBarrierBehaviour>();
         //add item booleans here
     }
 
@@ -149,13 +151,14 @@ public class PlayerAttackHandler : MonoBehaviour
     private IEnumerator fireSnowShuriken(float levelIntervalInSeconds)
     {
         yield return chargePowerRoutine(shurikenAttackCommand, levelIntervalInSeconds);
-        Debug.Log(chargeAttackPowerLevel);
         if (chargeAttackPowerLevel > 0)
         {
             Collider2D playerCollider = GetComponent<Collider2D>();
             Vector3 shurikenOrigin = (playerCollider.bounds.size.x * PlayerStats.GetProjectileDirection()) + playerCollider.bounds.center;
             GameObject shuriken = Instantiate(snowShuriken, shurikenOrigin, Quaternion.identity);
-            shuriken.GetComponent<ShurikenAttackBehaviour>().ReleaseAttack(chargeAttackPowerLevel);
+            ShurikenAttackBehaviour shurikenComponent = shuriken.GetComponent<ShurikenAttackBehaviour>();
+            shurikenComponent.ConfigurePuzzleIgnoring(shurikenPuzzles);
+            shurikenComponent.ReleaseAttack(chargeAttackPowerLevel);
         }
         chargeAttackPowerLevel = 0;
         isCharging = false;

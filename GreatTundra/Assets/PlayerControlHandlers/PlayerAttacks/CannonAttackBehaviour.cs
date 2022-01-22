@@ -40,7 +40,6 @@ public class CannonAttackBehaviour : MonoBehaviour, ChargeAttack
         if (layersToIgnore != (layersToIgnore | 1 << collision.gameObject.layer))
         {
             StartCoroutine(snowballExplode());
-            Debug.Log(collision.gameObject);
         }
     }
 
